@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+    a(href='/usuarios') back
+    .text-center    
+
+        br
+        br       
+        h2.section-heading.text-uppercase  Actualizar usuario
+        br
+        br
+        h3.section-subheading.text-muted Actualizar datos del usuario.
+    .container.py-5    
+        form#contactForm(action=`/usuarios/update/${objUsuario.id}` method='post')
+            .row.align-items-stretch.mb-5
+            .col-md-12
+                .form-group
+                    input#txtNombre.form-control(type='hide' placeholder='Your Name' name='txtNombre' value= objUsuario.nombre class=errors.nombre ? 'is-invalid' : '' required='required' data-validation-required-message='Please enter your name.')
+                    if(errors.nombre)
+                        small#nombreHelp.text-danger
+                            = errors.nombre.message
+                    p.help-block.text-danger
+                .form-group
+                    input#txtEmail.form-control(type='email' placeholder='Your Email' name='txtEmail' value= objUsuario.email required='required' data-validation-required-message='Please enter your email address.')
+                    if(errors.email)
+                        small#emailHelp.text-danger
+                            = errors.email.message
+                    p.help-block.text-danger
+                .form-group
+                    input#txtEmail2.form-control(type='hidden' placeholder='Your Email' name='txtEmail_old' value= objUsuario.email)
+            .text-center
+            #success
+            button#sendMessageButton.btn.btn-primary.btn.text-uppercase(type='submit' value='ok') Actualizar datos
+            br
+            br
+
+

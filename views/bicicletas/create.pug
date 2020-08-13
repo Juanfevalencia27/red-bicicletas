@@ -1,0 +1,59 @@
+extends ../layout
+
+block content
+    a(href='/bicicletas') back
+    .text-center    
+
+        br
+        br       
+        h2.section-heading.text-uppercase Agregar bicicleta
+        br
+        br
+        h3.section-subheading.text-muted Ingresar datos de la nueva bicicleta
+        
+    .container.py-5
+        form#contactForm(action='/bicicletas/create' method='post')
+            .row.align-items-stretch.mb-5
+            .col-md-12
+                .form-group                
+                    input#idBici.form-control(type='text' placeholder='Id Bicicleta' name='txtId' value= objBicicleta.Bicicleta class=errors.id ? 'is-invalid' : '' required='required' data-validation-required-message='Please enter id.')
+                    if(errors.id)
+                        small#nombreHelp.text-danger
+                            = errors.id.message
+                    p.help-block.text-danger
+                .form-group
+                    input#color.form-control(type='text' placeholder='Color bicicleta' name='txtColor' value= objBicicleta.color required='required' data-validation-required-message='Please enter color.')
+                    if(errors.color)
+                        small#emailHelp.text-danger
+                            = errors.color.message
+                    p.help-block.text-danger
+                .form-group
+                    input#modelo.form-control(type='text' placeholder='Modelo Bicicleta' name='txtModelo' value= objBicicleta.modelo required='required' data-validation-required-message='Please enter model.')
+                    if(errors.modelo)
+                        small#passwordHelp.text-danger
+                            = errors.modelo.message
+                    p.help-block.text-danger                
+                .form-group
+                    input#latitud.form-control(type='text' placeholder='Latitud Bicicleta' name='txtLatitud' value= objBicicleta.latitud required='required' data-validation-required-message='Please enter model.')
+                    if(errors.latitud)
+                        small#passwordHelp.text-danger
+                            = errors.latitud.message
+                    p.help-block.text-danger
+                .form-group
+                    input#longitud.form-control(type='text' placeholder='Modelo Bicicleta' name='txtLongitud' value= objBicicleta.longitud required='required' data-validation-required-message='Please enter model.')
+                    if(errors.longitud)
+                        small#passwordHelp.text-danger
+                            = errors.longitud.message
+                    p.help-block.text-danger
+            .text-center
+            #success
+            button#sendMessageButton.btn.btn-primary.btn.text-uppercase(type='submit') Guardar datos
+            br
+            br
+    
+
+
+            
+        
+            
+

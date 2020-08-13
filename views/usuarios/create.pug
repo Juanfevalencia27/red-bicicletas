@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+    
+    a(href='/usuarios') back
+    .text-center    
+
+        br
+        br       
+        h2.section-heading.text-uppercase  Agregar usuario
+        br
+        h3.section-subheading.text-muted Crear datos de nuevo usuario.
+        
+    .container.py-5
+        form#contactForm(action='/usuarios/create' method='post')
+            .row.align-items-stretch.mb-5
+            .col-md-12
+                .form-group
+                    input#txtNombre.form-control(type='text' placeholder='Your Name' name='txtNombre' value= objUsuario.nombre class=errors.nombre ? 'is-invalid' : '' required='required' data-validation-required-message='Please enter your name.')
+                    if(errors.nombre)
+                        small#nombreHelp.text-danger
+                            = errors.nombre.message
+                    p.help-block.text-danger
+                .form-group
+                    input#txtEmail.form-control(type='email' placeholder='Your Email' name='txtEmail' value= objUsuario.email required='required' data-validation-required-message='Please enter your email address.')
+                    if(errors.email)
+                        small#emailHelp.text-danger
+                            = errors.email.message
+                    p.help-block.text-danger
+                .form-group
+                    input#txtEmail.form-control(type='password' placeholder='Your password' name='txtPassword' value= objUsuario.password required='required' data-validation-required-message='Please enter your password.')
+                    if(errors.password)
+                        small#passwordHelp.text-danger
+                            = errors.password.message
+                    p.help-block.text-danger
+                .form-group
+                    input#txtEmail.form-control(type='password' placeholder='Confirm password' name='txtPassword_Confirm' value= objUsuario.passwordConfirm required='required' data-validation-required-message='Please enter your password again.')
+                    if(errors.passwordConfirm)
+                        small#passwordConfirmHelp.text-danger
+                            = errors.passwordConfirm.message
+                    p.help-block.text-danger
+            .text-center
+            #success
+            button#sendMessageButton.btn.btn-primary.text-uppercase(type='submit') Guardar datos
+            br
+            br
+
+

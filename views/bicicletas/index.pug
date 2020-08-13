@@ -1,0 +1,43 @@
+extends ../layout
+
+block content
+    nav#mainNav2.navbar.navbar-expand-lg.navbar-dark.fixed-top
+        .container
+            a.navbar-brand.js-scroll-trigger(href='#page-top')
+                img(src='/img/navbar-logo.svg' alt='')
+                button.navbar-toggler.navbar-toggler-right(type='button' data-toggle='collapse' data-target='#navbarResponsive2' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation')
+                    | Menu
+                    i.fas.fa-bars.ml-1
+            #navbarResponsive2.collapse.navbar-collapse
+                ul.navbar-nav.text-uppercase.ml-auto
+                li.nav-item
+                    a.nav-link.js-scroll-trigger(href='/bicicletas/create') Nueva bicicleta
+                li.nav-item
+                    a.nav-link.js-scroll-trigger(href='/') Home
+    br
+    br
+    br
+
+    table.table.table-striped.table-dark
+        thead
+            tr
+                th(scope='col') #
+                th(scope='col') Color
+                th(scope='col') Modelo
+                th(scope='col') Ubicación
+                th(scope='col') 
+        tbody
+            each objBici in obj1
+                tr
+                    th(scope='row')= objBici.id
+                    td= objBici.color
+                    td= objBici.modelo
+                    td= objBici.ubicacion
+                    td  
+                       a(href='/bicicletas/update/'+objBici.id) Actualizar bicicleta 
+                    td
+                        form.inline(method='post' action='/bicicletas/delete/'+objBici.id)
+                            input(type="hidden" name='id' value=objBici.id)
+                            button.btn.btn-primary(type="submit" name='submit-params' value='submit')='Eliminar'
+
+
