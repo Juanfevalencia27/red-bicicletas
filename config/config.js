@@ -1,5 +1,6 @@
+require('dotenv').config();
 const configMongo = {
-    urlBdDesa: 'mongodb://localhost/red_bicicletas',
+    urlBdDesa: process.env.MONGO_URI,
     urlBdTest: 'mongodb://localhost/testDb'
 }
 
